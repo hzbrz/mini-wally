@@ -4,6 +4,8 @@ import { Button, Card } from 'react-native-elements';
 import { connect } from "react-redux";
 import { createPicObj } from "../../redux/actions";
 
+console.ignoredYellowBox = ['Setting a timer'];
+
 class ListContainer extends Component {
 
   componentWillMount() {
