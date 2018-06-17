@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Alert } from 'react-native';
+import { FlatList, Alert, ScrollView } from 'react-native';
 import { connect } from "react-redux";
 import { getImagesfromFirebase } from "../../redux/actions";
 import ImageItem from "./ImageItem";
@@ -13,7 +13,7 @@ class ListItem extends Component {
 
     Alert.alert(
       'Important Notice:',
-      "Some images may take a while to load if an image is not loaded, \n\n\click on the white space to download",
+      "white spaces are dead links\n\n Click on the images to download them from web",
       [
         // hooks on which you can trigger animation
         // { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
@@ -45,13 +45,15 @@ class ListItem extends Component {
   render() {
     // {this.init()}
     return (
-      <FlatList
-        data={this.props.image_arr}
-        keyExtractor={this._keyExtractor}
-        renderItem={this._renderItem}
-        horizontal={true}
-        removeClippedSubviews={true}
-      />
+      <ScrollView>
+        <FlatList
+          data={this.props.image_arr}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
+          horizontal={true}
+          removeClippedSubviews={true}
+        />
+      </ScrollView>
     )
   }
 }

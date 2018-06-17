@@ -7,7 +7,6 @@ export default class ImageItem extends React.PureComponent {
 
   openLink = (item) => {
     WebBrowser.openBrowserAsync(item)
-    console.log(item)
   }
 
   render() {
@@ -15,7 +14,7 @@ export default class ImageItem extends React.PureComponent {
       <TouchableHighlight
         onPress={this.openLink.bind(this, this.props.image)}>
         <Image
-          style={{ width: width, height: height, marginRight: 10 }}
+          style={{ width: width, height: height }}
           source={{ uri: this.props.image }}
           resizeMethod={"resize"}
         />
