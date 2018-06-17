@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
 import ListConatainer from './app/containers/ListContainer';
 import ListItem from './app/components/ListItem';
+import store from './store';
 
 const RootStack = createStackNavigator(
   {
@@ -19,7 +21,9 @@ const RootStack = createStackNavigator(
 export default class App extends React.Component {
   render() {
     return (
-      <RootStack />
+      <Provider store={store}>
+        <RootStack />
+      </Provider>
     );
   }
 }
