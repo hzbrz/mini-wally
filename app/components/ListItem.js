@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { FlatList, Alert, Image, Dimensions } from 'react-native';
+import { FlatList, Alert } from 'react-native';
 import { connect } from "react-redux";
 import { getImagesfromFirebase } from "../../redux/actions";
+import ImageItem from "./ImageItem";
 
 class ListItem extends Component {
 
@@ -12,7 +13,7 @@ class ListItem extends Component {
 
     Alert.alert(
       'Important Notice:',
-      "Some images may take a while to load if an image is not loaded, \n\n\please click on the download button",
+      "Some images may take a while to load if an image is not loaded, \n\n\click on the white space to download",
       [
         // hooks on which you can trigger animation
         // { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
@@ -38,11 +39,7 @@ class ListItem extends Component {
   _keyExtractor = (item, index) => item;
 
   _renderItem = ({ item }) => (
-    <Image
-      style={{ width, height }}
-      source={{ uri: item }}
-      resizeMethod={"resize"}
-    />
+    <ImageItem image={item} />
   );
 
   render() {
@@ -63,6 +60,5 @@ const mapStateToProps = state => ({
   image_arr: state.image.images
 })
 
-const { width, height } = Dimensions.get("window");
 
 export default connect(mapStateToProps)(ListItem);
